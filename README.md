@@ -4,15 +4,15 @@ Simple notes for neovim
 # Setup
 Lua:
 ```
-neonotes.setup{
-    notes_prefix = 'note', -- prefix of filenames when create date notes. Ex: note-01.10.2022.txt
-    notes_path = '/home/user/notes' -- where to save note files
-  }
-```
+local status_ok, neonotes = pcall(require, "neonotes")
+if not status_ok then
+  return
+end
 
-# Keymaps
-```
-local neonotes = require"neonotes";
+-- init Neo Notes
+neonotes.setup {}
+
+-- Set keymap
 vim.keymap.set("n", "cn", function()
   neonotes.createNote()
 end)
